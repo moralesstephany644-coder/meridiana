@@ -1,6 +1,6 @@
 
 # ============================================================
-# MERIDIANA
+# CALCULADORA
 # MODULO 2: CONVERSIONES GEOGRAFICAS Y UTM
 # Basado en las formulas del archivo Excel del proyecto
 # ============================================================
@@ -607,7 +607,7 @@ def utm_a_geograficas(este, norte, zona, hemisferio, elipsoide):
 if __name__ == "__main__":
 
     print("======================================")
-    print("             MERIDIANA")
+    print("             CALCULADORA")
     print("       MODULO DE CONVERSIONES")
     print("======================================")
 

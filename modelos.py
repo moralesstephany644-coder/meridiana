@@ -1,6 +1,6 @@
 
 # ============================================================
-# MERIDIANA
+# CALCULADORA 
 # MÓDULO 1: CATÁLOGO DE ELIPSOIDES
 # Ingeniería Topográfica y Geodesia
 # ============================================================
@@ -186,7 +186,7 @@ def listar_elipsoides():
 if __name__ == "__main__":
 
     print("====================================")
-    print("          MERIDIANA")
+    print("          CALCULADORA")
     print("       CATÁLOGO DE ELIPSOIDES")
     print("====================================")
 

@@ -2,7 +2,7 @@ import streamlit as st
 from modelos import ELIPSOIDES, obtener_parametros
 from calculos import geograficas_a_utm, utm_a_geograficas, gms_a_decimal
 
-st.set_page_config(page_title="MERIDIANA | Transformador geodésico", page_icon="M", layout="wide")
+st.set_page_config(page_title="CALCULADORA | Transformador geodésico", page_icon="M", layout="wide")
 
 # Diseño alternativo: interfaz clara, flujo por etapas y resultados en panel inferior.
 st.markdown("""
@@ -41,7 +41,7 @@ st.markdown("""
 <div class="hero">
   <div class="hero-mark">⌖</div>
   <div class="hero-kicker">Cartografía 2 · Proyección UTM</div>
-  <div class="hero-name">MERIDIANA</div>
+  <div class="hero-name">CALCULADORA</div>
   <div class="hero-desc">Transformación de coordenadas geográficas y UTM</div>
 </div>
 """, unsafe_allow_html=True)
@@ -92,13 +92,13 @@ with input_col:
                 lon = gms_a_decimal(lon_g, lon_m, lon_s, lon_h)
             manual_zone = st.toggle("Fijar huso UTM manualmente", value=False)
             zona = st.number_input("Zona UTM seleccionada", min_value=1, max_value=60, value=14, disabled=not manual_zone) if manual_zone else None
-            st.caption("Por defecto, MERIDIANA determina el huso a partir de la longitud.")
+            st.caption("Por defecto, CALCULADORA determina el huso a partir de la longitud.")
             if st.button("Calcular coordenadas UTM", use_container_width=True, type="primary"):
                 try:
                     res = geograficas_a_utm(lat, lon, elipsoide, zona=zona)
-                    st.session_state["meridiana_res"] = res
-                    st.session_state["meridiana_mode"] = modo
-                    st.session_state["meridiana_ellipsoid"] = elipsoide
+                    st.session_state["calculadora_res"] = res
+                    st.session_state["calculadora_mode"] = modo
+                    st.session_state["calculadora_ellipsoid"] = elipsoide
                 except Exception as ex:
                     st.error(f"No se pudo calcular: {ex}")
         else:
@@ -113,9 +113,9 @@ with input_col:
             if st.button("Calcular coordenadas geográficas", use_container_width=True, type="primary"):
                 try:
                     res = utm_a_geograficas(este, norte, int(zona), hemisferio, elipsoide)
-                    st.session_state["meridiana_res"] = res
-                    st.session_state["meridiana_mode"] = modo
-                    st.session_state["meridiana_ellipsoid"] = elipsoide
+                    st.session_state["calculadora_res"] = res
+                    st.session_state["calculadora_mode"] = modo
+                    st.session_state["calculadora_ellipsoid"] = elipsoide
                 except Exception as ex:
                     st.error(f"No se pudo calcular: {ex}")
 with guide_col:
